@@ -2,26 +2,36 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 )
 
+func collatz(n int) int {
+	count := 0
+	// Your code here!
+	return count
+}
 func main() {
-	var a int
-	var b int = 10
-	var c = 10
-	var d, e, f bool
-
-	var (
-		g       int
-		h       string
-		i       int = 1234
-		j, k, l bool
-	)
-
-	m := 1
-	n, o := 2, 3
-	a = 11
-	e
-
-	fmt.Println("Hello, world!")
-	fmt.Println(a)
+	var n int
+	var err error
+	if len(os.Args) > 1 { // Read the number from the command line
+		n, err = strconv.Atoi(os.Args[1])
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	} else { // Read the number interactively
+		fmt.Println("Input a number > 1: ")
+		_, err := fmt.Scanf("%d", &n)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
+	if n <= 1 {
+		fmt.Println("n must be larger than 1.")
+		return
+	}
+	c := collatz(n)
+	fmt.Println(n, "requires", c, "steps to reach 1.")
 }
