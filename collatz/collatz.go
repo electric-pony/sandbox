@@ -9,6 +9,14 @@ import (
 func collatz(n int) int {
 	count := 0
 	// Your code here!
+	for n > 1 {
+		if n%2 == 0 {
+			n = n / 2
+		} else {
+			n = (n * 3) + 1
+		}
+		count++
+	}
 	return count
 }
 func main() {
